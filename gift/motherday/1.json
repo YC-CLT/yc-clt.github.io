@@ -1,0 +1,748 @@
+{
+  "log": {
+    "level": "warn",
+    "output": "box.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "dns-remote",
+        "address": "udp://1.1.1.1",
+        "address_resolver": "dns-direct"
+      },
+      {
+        "tag": "dns-trick-direct",
+        "address": "https://sky.rethinkdns.com/",
+        "detour": "direct-fragment"
+      },
+      {
+        "tag": "dns-direct",
+        "address": "223.5.5.5",
+        "address_resolver": "dns-local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-local",
+        "address": "local",
+        "detour": "direct"
+      },
+      {
+        "tag": "dns-block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "domain": [
+          "cr5.99979937.xyz",
+          "unify.46322416.xyz",
+          "h2.99979937.xyz",
+          "xc.99979937.xyz",
+          "az.99979937.xyz",
+          "x1.99979937.xyz",
+          "q2.46322416.xyz",
+          "xbgp1.99979937.xyz",
+          "cr2.99979937.xyz",
+          "cr4.99979937.xyz",
+          "q1.46322416.xyz",
+          "x2.99979937.xyz",
+          "h1.99979937.xyz",
+          "mr2.99979937.xyz",
+          "cr1.99979937.xyz",
+          "ns1.99979937.xyz",
+          "mr.99979937.xyz"
+        ],
+        "server": "dns-direct"
+      },
+      {
+        "domain": "cp.cloudflare.com",
+        "server": "dns-remote",
+        "rewrite_ttl": 3000
+      },
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "server": "dns-direct"
+      }
+    ],
+    "final": "dns-remote",
+    "static_ips": {
+      "sky.rethinkdns.com": [
+        "104.17.147.22",
+        "104.17.148.22",
+        "104.21.83.62",
+        "172.67.214.246",
+        "2606:4700:3030::6815:533e",
+        "2606:4700:3030::ac43:d6f6"
+      ]
+    },
+    "independent_cache": true
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "127.0.0.1",
+      "listen_port": 12334,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "set_system_proxy": true
+    },
+    {
+      "type": "direct",
+      "tag": "dns-in",
+      "listen": "127.0.0.1",
+      "listen_port": 16450
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "selector",
+      "tag": "select",
+      "outbounds": [
+        "auto",
+        "🇪🇸ChatGPTL-西班牙马德里2XC § 0",
+        "🇸🇬CTB-新加坡15MR2 § 1",
+        "🇸🇬CTB-新加坡51CR2 § 2",
+        "🇯🇵CTB-日本55MR2 § 3",
+        "🇯🇵CTB-日本58CR § 4",
+        "🇸🇬新加坡535770DRLI § 5",
+        "🇩🇪ChatGPT-MG-德国法兰克福2CR4 § 6",
+        "🇯🇵CS-日本26CR4 § 7",
+        "🇸🇬CTB-新加坡8NS1 § 8",
+        "🇺🇸RN-美国西雅图15XC § 9",
+        "🇯🇵CS-日本118XC § 10",
+        "🇯🇵CTB-日本77AZ § 11",
+        "🇺🇸HN-美国俄勒冈6MR2 § 12",
+        "🇭🇰IPLC深港235X § 13",
+        "🇭🇰IPLC深港QZ1 § 14",
+        "🇭🇰IPLC深港QZ2 § 15",
+        "🇭🇰AC-香港6SCR § 16",
+        "🇭🇰AC-香港5SMR § 17",
+        "🇭🇰AC-香港1CR § 18",
+        "🇺🇸ChatGPTRN-美国圣何塞31CR § 19",
+        "🇭🇰IPLC深港126X § 20",
+        "🇺🇸RN-美国西雅图20CR5 § 21",
+        "🇺🇸IPLC-GoogleScholar专用147QT § 22",
+        "🇺🇸IPLC-GoogleScholar专用145QT § 23",
+        "🇭🇰IPLC深港QZ3 § 24",
+        "🇭🇰IPLC深港QZ4 § 25",
+        "🇯🇵XZ-日本-10XB1 § 26",
+        "🇨🇳CS-台湾28XB2 § 27",
+        "🇭🇰IPLC深港25H电信 § 28",
+        "🇭🇰IPLC深港26H电信 § 29"
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "urltest",
+      "tag": "auto",
+      "outbounds": [
+        "🇪🇸ChatGPTL-西班牙马德里2XC § 0",
+        "🇸🇬CTB-新加坡15MR2 § 1",
+        "🇸🇬CTB-新加坡51CR2 § 2",
+        "🇯🇵CTB-日本55MR2 § 3",
+        "🇯🇵CTB-日本58CR § 4",
+        "🇸🇬新加坡535770DRLI § 5",
+        "🇩🇪ChatGPT-MG-德国法兰克福2CR4 § 6",
+        "🇯🇵CS-日本26CR4 § 7",
+        "🇸🇬CTB-新加坡8NS1 § 8",
+        "🇺🇸RN-美国西雅图15XC § 9",
+        "🇯🇵CS-日本118XC § 10",
+        "🇯🇵CTB-日本77AZ § 11",
+        "🇺🇸HN-美国俄勒冈6MR2 § 12",
+        "🇭🇰IPLC深港235X § 13",
+        "🇭🇰IPLC深港QZ1 § 14",
+        "🇭🇰IPLC深港QZ2 § 15",
+        "🇭🇰AC-香港6SCR § 16",
+        "🇭🇰AC-香港5SMR § 17",
+        "🇭🇰AC-香港1CR § 18",
+        "🇺🇸ChatGPTRN-美国圣何塞31CR § 19",
+        "🇭🇰IPLC深港126X § 20",
+        "🇺🇸RN-美国西雅图20CR5 § 21",
+        "🇺🇸IPLC-GoogleScholar专用147QT § 22",
+        "🇺🇸IPLC-GoogleScholar专用145QT § 23",
+        "🇭🇰IPLC深港QZ3 § 24",
+        "🇭🇰IPLC深港QZ4 § 25",
+        "🇯🇵XZ-日本-10XB1 § 26",
+        "🇨🇳CS-台湾28XB2 § 27",
+        "🇭🇰IPLC深港25H电信 § 28",
+        "🇭🇰IPLC深港26H电信 § 29"
+      ],
+      "url": "http://connectivitycheck.gstatic.com/generate_204",
+      "interval": "10m0s",
+      "idle_timeout": "1h40m0s"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇪🇸ChatGPTL-西班牙马德里2XC § 0",
+      "server": "xc.99979937.xyz",
+      "server_port": 49629,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇬CTB-新加坡15MR2 § 1",
+      "server": "mr2.99979937.xyz",
+      "server_port": 54997,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇬CTB-新加坡51CR2 § 2",
+      "server": "cr2.99979937.xyz",
+      "server_port": 43375,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵CTB-日本55MR2 § 3",
+      "server": "mr2.99979937.xyz",
+      "server_port": 22489,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵CTB-日本58CR § 4",
+      "server": "cr1.99979937.xyz",
+      "server_port": 19778,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "vless",
+      "tag": "🇸🇬新加坡535770DRLI § 5",
+      "server": "172.104.39.208",
+      "server_port": 443,
+      "uuid": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "flow": "xtls-rprx-vision",
+      "tls": {
+        "enabled": true,
+        "server_name": "www.intel.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        },
+        "reality": {
+          "enabled": true,
+          "public_key": "vBt2KtT5AM0pXeowbwBt9BH5E1enHxfPU1mHoeJ-TBk",
+          "short_id": "c248af1917c8c1fe"
+        }
+      },
+      "packet_encoding": "xudp"
+    },
+    {
+      "type": "trojan",
+      "tag": "🇩🇪ChatGPT-MG-德国法兰克福2CR4 § 6",
+      "server": "cr4.99979937.xyz",
+      "server_port": 50183,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵CS-日本26CR4 § 7",
+      "server": "cr4.99979937.xyz",
+      "server_port": 31688,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇬CTB-新加坡8NS1 § 8",
+      "server": "ns1.99979937.xyz",
+      "server_port": 30242,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸RN-美国西雅图15XC § 9",
+      "server": "xc.99979937.xyz",
+      "server_port": 57293,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵CS-日本118XC § 10",
+      "server": "xc.99979937.xyz",
+      "server_port": 32651,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵CTB-日本77AZ § 11",
+      "server": "az.99979937.xyz",
+      "server_port": 18773,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸HN-美国俄勒冈6MR2 § 12",
+      "server": "mr2.99979937.xyz",
+      "server_port": 24865,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港235X § 13",
+      "server": "x1.99979937.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港QZ1 § 14",
+      "server": "q1.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港QZ2 § 15",
+      "server": "q2.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰AC-香港6SCR § 16",
+      "server": "cr1.99979937.xyz",
+      "server_port": 44343,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰AC-香港5SMR § 17",
+      "server": "mr.99979937.xyz",
+      "server_port": 18482,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰AC-香港1CR § 18",
+      "server": "cr1.99979937.xyz",
+      "server_port": 65346,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸ChatGPTRN-美国圣何塞31CR § 19",
+      "server": "cr1.99979937.xyz",
+      "server_port": 35953,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港126X § 20",
+      "server": "x2.99979937.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸RN-美国西雅图20CR5 § 21",
+      "server": "cr5.99979937.xyz",
+      "server_port": 24902,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸IPLC-GoogleScholar专用147QT § 22",
+      "server": "q1.46322416.xyz",
+      "server_port": 7777,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸IPLC-GoogleScholar专用145QT § 23",
+      "server": "q2.46322416.xyz",
+      "server_port": 7777,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港QZ3 § 24",
+      "server": "q2.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港QZ4 § 25",
+      "server": "q1.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵XZ-日本-10XB1 § 26",
+      "server": "xbgp1.99979937.xyz",
+      "server_port": 60096,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇨🇳CS-台湾28XB2 § 27",
+      "server": "unify.46322416.xyz",
+      "server_port": 60073,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港25H电信 § 28",
+      "server": "h1.99979937.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "disable_sni": true,
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港26H电信 § 29",
+      "server": "h2.99979937.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls": {
+        "enabled": true,
+        "disable_sni": true,
+        "insecure": true,
+        "utls": {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-fragment",
+      "tls_fragment": {
+        "enabled": true,
+        "size": "10-30",
+        "sleep": "2-8"
+      }
+    },
+    {
+      "type": "direct",
+      "tag": "bypass"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "rule_set": [
+          "geoip-cn",
+          "geosite-cn"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "inbound": "dns-in",
+        "outbound": "dns-out"
+      },
+      {
+        "port": 53,
+        "outbound": "dns-out"
+      },
+      {
+        "clash_mode": "Direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "Global",
+        "outbound": "select"
+      }
+    ],
+    "rule_set": [
+      {
+        "type": "remote",
+        "tag": "geoip-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geoip-cn.srs",
+        "update_interval": "120h0m0s"
+      },
+      {
+        "type": "remote",
+        "tag": "geosite-cn",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/hiddify/hiddify-geo/rule-set/country/geosite-cn.srs",
+        "update_interval": "120h0m0s"
+      }
+    ],
+    "final": "select",
+    "auto_detect_interface": true,
+    "override_android_vpn": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true,
+      "path": "clash.db"
+    },
+    "clash_api": {
+      "external_controller": "127.0.0.1:16756",
+      "secret": "ddeaMyarsb08B5uT"
+    }
+  }
+}

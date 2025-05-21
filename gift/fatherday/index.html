@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>致行星发动机总工程师</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- 科幻数据流 -->
+    <div class="data-stream"></div>
+    
+    <!-- 战机动画 -->
+    <div class="fighter">🛸</div>
+    
+    <div class="container">
+        <header class="header">
+            <h1 class="title">行星发动机总工程师节日快乐</h1>
+            <p class="subtitle">地球流浪计划 · 南天门特别致敬</p>
+        </header>
+        
+        <div class="content-box">
+            <p class="message">
+                尊敬的领航员空间站首席工程师：<br><br>
+                在您指挥的这艘名为"家庭"的星际飞船上，<br>
+                您用智慧和坚韧建造了最强大的引力护盾，<br>
+                用耐心和爱心组装了最精密的生命维持系统。<br><br>
+                今天是属于您的节日，<br>
+                愿这份全息讯息穿越2500年的航程，<br>
+                将我们的敬意送达您的手中。
+            </p>
+            <p class="signature">—— 来自地球文明延续委员会</p>
+        </div>
+        
+        <button class="btn" id="activateBtn">激 活 全 息 记 录</button>
+        
+        <div class="footer">
+            <p>识别码：DAD-2077 · 权限等级：最高机密</p>
+            <p>ps: 此讯息已通过量子加密，可在领航员空间站安全展示</p>
+        </div>
+    </div>
+
+    <script src="./stars.js"></script>
+    <script src="./jets.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+        });
+    </script>
+</body>
+</html>
