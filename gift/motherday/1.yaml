@@ -1,0 +1,334 @@
+proxies:
+  - name: "🇪🇸ChatGPTL-西班牙马德里2XC § 0"
+    type: trojan
+    server: xc.99979937.xyz
+    port: 49629
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇸🇬CTB-新加坡15MR2 § 1"
+    type: trojan
+    server: mr2.99979937.xyz
+    port: 54997
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇸🇬CTB-新加坡51CR2 § 2"
+    type: trojan
+    server: cr2.99979937.xyz
+    port: 43375
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇯🇵CTB-日本55MR2 § 3"
+    type: trojan
+    server: mr2.99979937.xyz
+    port: 22489
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇯🇵CTB-日本58CR § 4"
+    type: trojan
+    server: cr1.99979937.xyz
+    port: 19778
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇸🇬新加坡535770DRLI § 5"
+    type: vless
+    server: 172.104.39.208
+    port: 443
+    uuid: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    flow: "xtls-rprx-vision"
+    tls: true
+    sni: "www.intel.com"
+    skip-cert-verify: true
+    udp: true
+    client-fingerprint: chrome
+    reality-opts:
+      public-key: "vBt2KtT5AM0pXeowbwBt9BH5E1enHxfPU1mHoeJ-TBk"
+      short-id: "c248af1917c8c1fe"
+
+  - name: "🇩🇪ChatGPT-MG-德国法兰克福2CR4 § 6"
+    type: trojan
+    server: cr4.99979937.xyz
+    port: 50183
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇯🇵CS-日本26CR4 § 7"
+    type: trojan
+    server: cr4.99979937.xyz
+    port: 31688
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇸🇬CTB-新加坡8NS1 § 8"
+    type: trojan
+    server: ns1.99979937.xyz
+    port: 30242
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇺🇸RN-美国西雅图15XC § 9"
+    type: trojan
+    server: xc.99979937.xyz
+    port: 57293
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇯🇵CS-日本118XC § 10"
+    type: trojan
+    server: xc.99979937.xyz
+    port: 32651
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇯🇵CTB-日本77AZ § 11"
+    type: trojan
+    server: az.99979937.xyz
+    port: 18773
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇺🇸HN-美国俄勒冈6MR2 § 12"
+    type: trojan
+    server: mr2.99979937.xyz
+    port: 24865
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰IPLC深港235X § 13"
+    type: trojan
+    server: x1.99979937.xyz
+    port: 20220
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰IPLC深港QZ1 § 14"
+    type: trojan
+    server: q1.46322416.xyz
+    port: 20220
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰IPLC深港QZ2 § 15"
+    type: trojan
+    server: q2.46322416.xyz
+    port: 20220
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰AC-香港6SCR § 16"
+    type: trojan
+    server: cr1.99979937.xyz
+    port: 44343
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰AC-香港5SMR § 17"
+    type: trojan
+    server: mr.99979937.xyz
+    port: 18482
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰AC-香港1CR § 18"
+    type: trojan
+    server: cr1.99979937.xyz
+    port: 65346
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇺🇸ChatGPTRN-美国圣何塞31CR § 19"
+    type: trojan
+    server: cr1.99979937.xyz
+    port: 35953
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰IPLC深港126X § 20"
+    type: trojan
+    server: x2.99979937.xyz
+    port: 20220
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇺🇸RN-美国西雅图20CR5 § 21"
+    type: trojan
+    server: cr5.99979937.xyz
+    port: 24902
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇺🇸IPLC-GoogleScholar专用147QT § 22"
+    type: trojan
+    server: q1.46322416.xyz
+    port: 7777
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇺🇸IPLC-GoogleScholar专用145QT § 23"
+    type: trojan
+    server: q2.46322416.xyz
+    port: 7777
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰IPLC深港QZ3 § 24"
+    type: trojan
+    server: q2.46322416.xyz
+    port: 20220
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰IPLC深港QZ4 § 25"
+    type: trojan
+    server: q1.46322416.xyz
+    port: 20220
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇯🇵XZ-日本-10XB1 § 26"
+    type: trojan
+    server: xbgp1.99979937.xyz
+    port: 60096
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇨🇳CS-台湾28XB2 § 27"
+    type: trojan
+    server: unify.46322416.xyz
+    port: 60073
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "cdn.alibaba.com"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰IPLC深港25H电信 § 28"
+    type: trojan
+    server: h1.99979937.xyz
+    port: 20220
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "h1.99979937.xyz"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
+
+  - name: "🇭🇰IPLC深港26H电信 § 29"
+    type: trojan
+    server: h2.99979937.xyz
+    port: 20220
+    password: "0b9c9261-7209-4dcc-b268-2fa74f6cd536"
+    sni: "h2.99979937.xyz"
+    skip-cert-verify: true
+    udp: true
+    tls: true
+    client-fingerprint: chrome
