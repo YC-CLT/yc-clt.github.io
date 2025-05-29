@@ -1,5 +1,5 @@
 proxies:
-  - name: "ðŸ‡ªðŸ‡¸ChatGPTL-è¥¿ç­ç‰™é©¬å¾·é‡Œ2XC Â§ 0"
+  - name: "”9”0”9•4ChatGPTL-Î÷°àÑÀÂíµÂÀï2XC ¡ì 0"
     type: trojan
     server: xc.99979937.xyz
     port: 49629
@@ -10,7 +10,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¸ðŸ‡¬CTB-æ–°åŠ å¡15MR2 Â§ 1"
+  - name: "”9•4”9”2CTB-ÐÂ¼ÓÆÂ15MR2 ¡ì 1"
     type: trojan
     server: mr2.99979937.xyz
     port: 54997
@@ -21,7 +21,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¸ðŸ‡¬CTB-æ–°åŠ å¡51CR2 Â§ 2"
+  - name: "”9•4”9”2CTB-ÐÂ¼ÓÆÂ51CR2 ¡ì 2"
     type: trojan
     server: cr2.99979937.xyz
     port: 43375
@@ -32,7 +32,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¯ðŸ‡µCTB-æ—¥æœ¬55MR2 Â§ 3"
+  - name: "”9”5”9•1CTB-ÈÕ±¾55MR2 ¡ì 3"
     type: trojan
     server: mr2.99979937.xyz
     port: 22489
@@ -43,7 +43,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¯ðŸ‡µCTB-æ—¥æœ¬58CR Â§ 4"
+  - name: "”9”5”9•1CTB-ÈÕ±¾58CR ¡ì 4"
     type: trojan
     server: cr1.99979937.xyz
     port: 19778
@@ -54,7 +54,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¸ðŸ‡¬æ–°åŠ å¡535770DRLI Â§ 5"
+  - name: "”9•4”9”2ÐÂ¼ÓÆÂ535770DRLI ¡ì 5"
     type: vless
     server: 172.104.39.208
     port: 443
@@ -69,7 +69,7 @@ proxies:
       public-key: "vBt2KtT5AM0pXeowbwBt9BH5E1enHxfPU1mHoeJ-TBk"
       short-id: "c248af1917c8c1fe"
 
-  - name: "ðŸ‡©ðŸ‡ªChatGPT-MG-å¾·å›½æ³•å…°å…‹ç¦2CR4 Â§ 6"
+  - name: "”9“9”9”0ChatGPT-MG-µÂ¹ú·¨À¼¿Ë¸£2CR4 ¡ì 6"
     type: trojan
     server: cr4.99979937.xyz
     port: 50183
@@ -80,7 +80,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¯ðŸ‡µCS-æ—¥æœ¬26CR4 Â§ 7"
+  - name: "”9”5”9•1CS-ÈÕ±¾26CR4 ¡ì 7"
     type: trojan
     server: cr4.99979937.xyz
     port: 31688
@@ -91,7 +91,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¸ðŸ‡¬CTB-æ–°åŠ å¡8NS1 Â§ 8"
+  - name: "”9•4”9”2CTB-ÐÂ¼ÓÆÂ8NS1 ¡ì 8"
     type: trojan
     server: ns1.99979937.xyz
     port: 30242
@@ -102,7 +102,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡ºðŸ‡¸RN-ç¾Žå›½è¥¿é›…å›¾15XC Â§ 9"
+  - name: "”9•6”9•4RN-ÃÀ¹úÎ÷ÑÅÍ¼15XC ¡ì 9"
     type: trojan
     server: xc.99979937.xyz
     port: 57293
@@ -113,7 +113,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¯ðŸ‡µCS-æ—¥æœ¬118XC Â§ 10"
+  - name: "”9”5”9•1CS-ÈÕ±¾118XC ¡ì 10"
     type: trojan
     server: xc.99979937.xyz
     port: 32651
@@ -124,7 +124,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¯ðŸ‡µCTB-æ—¥æœ¬77AZ Â§ 11"
+  - name: "”9”5”9•1CTB-ÈÕ±¾77AZ ¡ì 11"
     type: trojan
     server: az.99979937.xyz
     port: 18773
@@ -135,7 +135,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡ºðŸ‡¸HN-ç¾Žå›½ä¿„å‹’å†ˆ6MR2 Â§ 12"
+  - name: "”9•6”9•4HN-ÃÀ¹ú¶íÀÕ¸Ô6MR2 ¡ì 12"
     type: trojan
     server: mr2.99979937.xyz
     port: 24865
@@ -146,7 +146,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯235X Â§ 13"
+  - name: "”9”3”9”6IPLCÉî¸Û235X ¡ì 13"
     type: trojan
     server: x1.99979937.xyz
     port: 20220
@@ -157,7 +157,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯QZ1 Â§ 14"
+  - name: "”9”3”9”6IPLCÉî¸ÛQZ1 ¡ì 14"
     type: trojan
     server: q1.46322416.xyz
     port: 20220
@@ -168,7 +168,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯QZ2 Â§ 15"
+  - name: "”9”3”9”6IPLCÉî¸ÛQZ2 ¡ì 15"
     type: trojan
     server: q2.46322416.xyz
     port: 20220
@@ -179,7 +179,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°AC-é¦™æ¸¯6SCR Â§ 16"
+  - name: "”9”3”9”6AC-Ïã¸Û6SCR ¡ì 16"
     type: trojan
     server: cr1.99979937.xyz
     port: 44343
@@ -190,7 +190,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°AC-é¦™æ¸¯5SMR Â§ 17"
+  - name: "”9”3”9”6AC-Ïã¸Û5SMR ¡ì 17"
     type: trojan
     server: mr.99979937.xyz
     port: 18482
@@ -201,7 +201,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°AC-é¦™æ¸¯1CR Â§ 18"
+  - name: "”9”3”9”6AC-Ïã¸Û1CR ¡ì 18"
     type: trojan
     server: cr1.99979937.xyz
     port: 65346
@@ -212,7 +212,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡ºðŸ‡¸ChatGPTRN-ç¾Žå›½åœ£ä½•å¡ž31CR Â§ 19"
+  - name: "”9•6”9•4ChatGPTRN-ÃÀ¹úÊ¥ºÎÈû31CR ¡ì 19"
     type: trojan
     server: cr1.99979937.xyz
     port: 35953
@@ -223,7 +223,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯126X Â§ 20"
+  - name: "”9”3”9”6IPLCÉî¸Û126X ¡ì 20"
     type: trojan
     server: x2.99979937.xyz
     port: 20220
@@ -234,7 +234,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡ºðŸ‡¸RN-ç¾Žå›½è¥¿é›…å›¾20CR5 Â§ 21"
+  - name: "”9•6”9•4RN-ÃÀ¹úÎ÷ÑÅÍ¼20CR5 ¡ì 21"
     type: trojan
     server: cr5.99979937.xyz
     port: 24902
@@ -245,7 +245,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡ºðŸ‡¸IPLC-GoogleScholarä¸“ç”¨147QT Â§ 22"
+  - name: "”9•6”9•4IPLC-GoogleScholar×¨ÓÃ147QT ¡ì 22"
     type: trojan
     server: q1.46322416.xyz
     port: 7777
@@ -256,7 +256,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡ºðŸ‡¸IPLC-GoogleScholarä¸“ç”¨145QT Â§ 23"
+  - name: "”9•6”9•4IPLC-GoogleScholar×¨ÓÃ145QT ¡ì 23"
     type: trojan
     server: q2.46322416.xyz
     port: 7777
@@ -267,7 +267,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯QZ3 Â§ 24"
+  - name: "”9”3”9”6IPLCÉî¸ÛQZ3 ¡ì 24"
     type: trojan
     server: q2.46322416.xyz
     port: 20220
@@ -278,7 +278,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯QZ4 Â§ 25"
+  - name: "”9”3”9”6IPLCÉî¸ÛQZ4 ¡ì 25"
     type: trojan
     server: q1.46322416.xyz
     port: 20220
@@ -289,7 +289,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¯ðŸ‡µXZ-æ—¥æœ¬-10XB1 Â§ 26"
+  - name: "”9”5”9•1XZ-ÈÕ±¾-10XB1 ¡ì 26"
     type: trojan
     server: xbgp1.99979937.xyz
     port: 60096
@@ -300,7 +300,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡¨ðŸ‡³CS-å°æ¹¾28XB2 Â§ 27"
+  - name: "”9“8”9”9CS-Ì¨Íå28XB2 ¡ì 27"
     type: trojan
     server: unify.46322416.xyz
     port: 60073
@@ -311,7 +311,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯25Hç”µä¿¡ Â§ 28"
+  - name: "”9”3”9”6IPLCÉî¸Û25HµçÐÅ ¡ì 28"
     type: trojan
     server: h1.99979937.xyz
     port: 20220
@@ -322,7 +322,7 @@ proxies:
     tls: true
     client-fingerprint: chrome
 
-  - name: "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯26Hç”µä¿¡ Â§ 29"
+  - name: "”9”3”9”6IPLCÉî¸Û26HµçÐÅ ¡ì 29"
     type: trojan
     server: h2.99979937.xyz
     port: 20220
@@ -334,74 +334,74 @@ proxies:
     client-fingerprint: chrome
 
 proxy-groups:
-  - name: ðŸš€ è‡ªåŠ¨é€‰æ‹©
+  - name: •0‹4 ×Ô¶¯Ñ¡Ôñ
     type: url-test
     proxies:
-      - ðŸ‡­ðŸ‡° é¦™æ¸¯èŠ‚ç‚¹
-      - ðŸ‡¯ðŸ‡µ æ—¥æœ¬èŠ‚ç‚¹
-      - ðŸ‡¸ðŸ‡¬ æ–°åŠ å¡èŠ‚ç‚¹
-      - ðŸ‡ºðŸ‡¸ ç¾Žå›½èŠ‚ç‚¹
-      - ðŸ‡ªðŸ‡º å…¶ä»–åœ°åŒº
+      - ”9”3”9”6 Ïã¸Û½Úµã
+      - ”9”5”9•1 ÈÕ±¾½Úµã
+      - ”9•4”9”2 ÐÂ¼ÓÆÂ½Úµã
+      - ”9•6”9•4 ÃÀ¹ú½Úµã
+      - ”9”0”9•6 ÆäËûµØÇø
     url: "http://www.gstatic.com/generate_204"
     interval: 300
 
-  - name: ðŸ“º æ‰‹åŠ¨é€‰æ‹©
+  - name: ”9â4 ÊÖ¶¯Ñ¡Ôñ
     type: select
     proxies:
-      - ðŸš€ è‡ªåŠ¨é€‰æ‹©
+      - •0‹4 ×Ô¶¯Ñ¡Ôñ
       - DIRECT
-      - ðŸ‡­ðŸ‡° é¦™æ¸¯èŠ‚ç‚¹
-      - ðŸ‡¯ðŸ‡µ æ—¥æœ¬èŠ‚ç‚¹
-      - ðŸ‡¸ðŸ‡¬ æ–°åŠ å¡èŠ‚ç‚¹
-      - ðŸ‡ºðŸ‡¸ ç¾Žå›½èŠ‚ç‚¹
-      - ðŸ‡ªðŸ‡º å…¶ä»–åœ°åŒº
+      - ”9”3”9”6 Ïã¸Û½Úµã
+      - ”9”5”9•1 ÈÕ±¾½Úµã
+      - ”9•4”9”2 ÐÂ¼ÓÆÂ½Úµã
+      - ”9•6”9•4 ÃÀ¹ú½Úµã
+      - ”9”0”9•6 ÆäËûµØÇø
 
-  - name: ðŸ‡­ðŸ‡° é¦™æ¸¯èŠ‚ç‚¹
+  - name: ”9”3”9”6 Ïã¸Û½Úµã
     type: select
     proxies:
-      - "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯235X Â§ 13"
-      - "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯QZ1 Â§ 14"
-      - "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯QZ2 Â§ 15"
-      - "ðŸ‡­ðŸ‡°AC-é¦™æ¸¯6SCR Â§ 16"
-      - "ðŸ‡­ðŸ‡°AC-é¦™æ¸¯5SMR Â§ 17"
-      - "ðŸ‡­ðŸ‡°AC-é¦™æ¸¯1CR Â§ 18"
-      - "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯126X Â§ 20"
-      - "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯QZ3 Â§ 24"
-      - "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯QZ4 Â§ 25"
-      - "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯25Hç”µä¿¡ Â§ 28"
-      - "ðŸ‡­ðŸ‡°IPLCæ·±æ¸¯26Hç”µä¿¡ Â§ 29"
+      - "”9”3”9”6IPLCÉî¸Û235X ¡ì 13"
+      - "”9”3”9”6IPLCÉî¸ÛQZ1 ¡ì 14"
+      - "”9”3”9”6IPLCÉî¸ÛQZ2 ¡ì 15"
+      - "”9”3”9”6AC-Ïã¸Û6SCR ¡ì 16"
+      - "”9”3”9”6AC-Ïã¸Û5SMR ¡ì 17"
+      - "”9”3”9”6AC-Ïã¸Û1CR ¡ì 18"
+      - "”9”3”9”6IPLCÉî¸Û126X ¡ì 20"
+      - "”9”3”9”6IPLCÉî¸ÛQZ3 ¡ì 24"
+      - "”9”3”9”6IPLCÉî¸ÛQZ4 ¡ì 25"
+      - "”9”3”9”6IPLCÉî¸Û25HµçÐÅ ¡ì 28"
+      - "”9”3”9”6IPLCÉî¸Û26HµçÐÅ ¡ì 29"
 
-  - name: ðŸ‡¯ðŸ‡µ æ—¥æœ¬èŠ‚ç‚¹
+  - name: ”9”5”9•1 ÈÕ±¾½Úµã
     type: select
     proxies:
-      - "ðŸ‡¯ðŸ‡µCTB-æ—¥æœ¬55MR2 Â§ 3"
-      - "ðŸ‡¯ðŸ‡µCTB-æ—¥æœ¬58CR Â§ 4"
-      - "ðŸ‡¯ðŸ‡µCS-æ—¥æœ¬26CR4 Â§ 7"
-      - "ðŸ‡¯ðŸ‡µCS-æ—¥æœ¬118XC Â§ 10"
-      - "ðŸ‡¯ðŸ‡µCTB-æ—¥æœ¬77AZ Â§ 11"
-      - "ðŸ‡¯ðŸ‡µXZ-æ—¥æœ¬-10XB1 Â§ 26"
+      - "”9”5”9•1CTB-ÈÕ±¾55MR2 ¡ì 3"
+      - "”9”5”9•1CTB-ÈÕ±¾58CR ¡ì 4"
+      - "”9”5”9•1CS-ÈÕ±¾26CR4 ¡ì 7"
+      - "”9”5”9•1CS-ÈÕ±¾118XC ¡ì 10"
+      - "”9”5”9•1CTB-ÈÕ±¾77AZ ¡ì 11"
+      - "”9”5”9•1XZ-ÈÕ±¾-10XB1 ¡ì 26"
 
-  - name: ðŸ‡¸ðŸ‡¬ æ–°åŠ å¡èŠ‚ç‚¹
+  - name: ”9•4”9”2 ÐÂ¼ÓÆÂ½Úµã
     type: select
     proxies:
-      - "ðŸ‡¸ðŸ‡¬CTB-æ–°åŠ å¡15MR2 Â§ 1"
-      - "ðŸ‡¸ðŸ‡¬CTB-æ–°åŠ å¡51CR2 Â§ 2"
-      - "ðŸ‡¸ðŸ‡¬æ–°åŠ å¡535770DRLI Â§ 5"
-      - "ðŸ‡¸ðŸ‡¬CTB-æ–°åŠ å¡8NS1 Â§ 8"
+      - "”9•4”9”2CTB-ÐÂ¼ÓÆÂ15MR2 ¡ì 1"
+      - "”9•4”9”2CTB-ÐÂ¼ÓÆÂ51CR2 ¡ì 2"
+      - "”9•4”9”2ÐÂ¼ÓÆÂ535770DRLI ¡ì 5"
+      - "”9•4”9”2CTB-ÐÂ¼ÓÆÂ8NS1 ¡ì 8"
 
-  - name: ðŸ‡ºðŸ‡¸ ç¾Žå›½èŠ‚ç‚¹
+  - name: ”9•6”9•4 ÃÀ¹ú½Úµã
     type: select
     proxies:
-      - "ðŸ‡ºðŸ‡¸RN-ç¾Žå›½è¥¿é›…å›¾15XC Â§ 9"
-      - "ðŸ‡ºðŸ‡¸HN-ç¾Žå›½ä¿„å‹’å†ˆ6MR2 Â§ 12"
-      - "ðŸ‡ºðŸ‡¸RN-ç¾Žå›½è¥¿é›…å›¾20CR5 Â§ 21"
-      - "ðŸ‡ºðŸ‡¸ChatGPTRN-ç¾Žå›½åœ£ä½•å¡ž31CR Â§ 19"
+      - "”9•6”9•4RN-ÃÀ¹úÎ÷ÑÅÍ¼15XC ¡ì 9"
+      - "”9•6”9•4HN-ÃÀ¹ú¶íÀÕ¸Ô6MR2 ¡ì 12"
+      - "”9•6”9•4RN-ÃÀ¹úÎ÷ÑÅÍ¼20CR5 ¡ì 21"
+      - "”9•6”9•4ChatGPTRN-ÃÀ¹úÊ¥ºÎÈû31CR ¡ì 19"
 
-  - name: ðŸ‡ªðŸ‡º å…¶ä»–åœ°åŒº
+  - name: ”9”0”9•6 ÆäËûµØÇø
     type: select
     proxies:
-      - "ðŸ‡ªðŸ‡¸ChatGPTL-è¥¿ç­ç‰™é©¬å¾·é‡Œ2XC Â§ 0"
-      - "ðŸ‡©ðŸ‡ªChatGPT-MG-å¾·å›½æ³•å…°å…‹ç¦2CR4 Â§ 6"
-      - "ðŸ‡¨ðŸ‡³CS-å°æ¹¾28XB2 Â§ 27"
-      - "ðŸ‡ºðŸ‡¸IPLC-GoogleScholarä¸“ç”¨147QT Â§ 22"
-      - "ðŸ‡ºðŸ‡¸IPLC-GoogleScholarä¸“ç”¨145QT Â§ 23"
+      - "”9”0”9•4ChatGPTL-Î÷°àÑÀÂíµÂÀï2XC ¡ì 0"
+      - "”9“9”9”0ChatGPT-MG-µÂ¹ú·¨À¼¿Ë¸£2CR4 ¡ì 6"
+      - "”9“8”9”9CS-Ì¨Íå28XB2 ¡ì 27"
+      - "”9•6”9•4IPLC-GoogleScholar×¨ÓÃ147QT ¡ì 22"
+      - "”9•6”9•4IPLC-GoogleScholar×¨ÓÃ145QT ¡ì 23"
