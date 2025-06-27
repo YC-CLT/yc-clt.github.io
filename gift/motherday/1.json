@@ -441,7 +441,7 @@
     },
     {
       "type": "trojan",
-      "tag": "🇨🇳CS-台湾28XB2 § 27",
+      "tag": "🇨🇳🇹🇼CS-中国台湾28XB2 § 27",
       "server": "unify.46322416.xyz",
       "server_port": 60073,
       "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
@@ -481,6 +481,485 @@
         "enabled": true,
         "disable_sni": true,
         "insecure": true,
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+  {
+      "type": "trojan",
+      "tag": "🇸🇬CTB-新加坡13XC § 30",
+      "server": "xc.99979937.xyz",
+      "server_port": 50247,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+{
+      "type": "trojan",
+      "tag": "🇸🇬CTB-新加坡43CR § 31",
+      "server": "cr1.99979937.xyz",
+      "server_port": 50264,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+ {
+      "type": "trojan",
+      "tag": "🇸🇬CTB-新加坡32MR2 § 32",
+      "server": "mr2.99979937.xyz",
+      "server_port": 50253,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+{
+      "type": "trojan",
+      "tag": "🇯🇵CTB-日本54XC § 33",
+      "server": "xc.99979937.xyz",
+      "server_port": 50364,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+ {
+      "type": "trojan",
+      "tag": "🇺🇸ChatGPT-RN-美国圣何塞-9HBGP2 § 34",
+      "server": "180.188.47.147",
+      "server_port": 60128,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇬🇧ChatGPT-MG-英国伦敦8NS1 § 35",
+      "server": "ns1.99979937.xyz",
+      "server_port": 50408,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰CS-香港105HBGP2 §36",
+      "server": "180.188.47.147",
+      "server_port": 60021,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸RN-美国西雅图17NS1 § 37",
+      "server": "ns1.99979937.xyz",
+      "server_port": 50311,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵CS-日本28AZ § 38",
+      "server": "az.99979937.xyz",
+      "server_port": 50340,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵CTB-日本58AZ § 39",
+      "server": "az.99979937.xyz",
+      "server_port": 50360,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇨🇳🇹🇼CS-中国台湾27MR § 40",
+      "server": "mr.99979937.xyz",
+      "server_port": 50288,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇩🇪HN-德国纽伦堡1NS1 § 41",
+      "server": "ns1.99979937.xyz",
+      "server_port": 50383,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸HN-美国俄勒冈6CR2 § 42",
+      "server": "cr2.99979937.xyz",
+      "server_port": 50320,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港235X § 43",
+      "server": "120.233.248.141",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇺🇸ChatGPT-RN-美国圣何塞26CR2 §44",
+      "server": "cr2.99979937.xyz",
+      "server_port": 50330,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港QZ1 § 45",
+      "server": "q1.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港QZ2 § 46",
+      "server": "q2.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港126X § 47",
+      "server": "xbgp.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇬🇧MG-英国伦敦8CR5 § 48",
+      "server": "cr5.99979937.xyz",
+      "server_port": 50408,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC-GoogleScholar专用147QT § 49",
+      "server": "q1.46322416.xyz",
+      "server_port": 7777,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC-GoogleScholar专用145QT § 50",
+      "server": "q2.46322416.xyz",
+      "server_port": 7777,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇰🇷BV韩国-1CR1 § 51",
+      "server": "cr1.99979937.xyz",
+      "server_port": 50375,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港QZ3 § 52",
+      "server": "q2.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港QZ4 § 53",
+      "server": "q1.46322416.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇦🇷BV阿根廷-2MR2 § 54",
+      "server": "mr2.99979937.xyz",
+      "server_port": 50380,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇯🇵CS-日本114XB1 § 55",
+      "server": "xbgp.46322416.xyz",
+      "server_port": 60083,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇸🇬CTB-新加坡45XB2 § 56",
+      "server": "unify.46322416.xyz",
+      "server_port": 60050,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "server_name": "cdn.alibaba.com",
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港25H电信 § 57",
+      "server": "h1.99979937.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "disable_sni": true,
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC深港26H电信 § 58",
+      "server": "h2.99979937.xyz",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "disable_sni": true,
+        "utls":         {
+          "enabled": true,
+          "fingerprint": "chrome"
+        }
+      }
+    },
+    {
+      "type": "trojan",
+      "tag": "🇭🇰IPLC厦港BGP106H § 59",
+      "server": "180.188.47.147",
+      "server_port": 20220,
+      "password": "0b9c9261-7209-4dcc-b268-2fa74f6cd536",
+      "tls":       {
+        "enabled": true,
+	"insecure": true,
+        "disable_sni": true,
         "utls":         {
           "enabled": true,
           "fingerprint": "chrome"

@@ -337,71 +337,200 @@ proxy-groups:
   - name: 🚀 自动选择
     type: url-test
     proxies:
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🇪🇺 其他地区
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-
-  - name: 📺 手动选择
-    type: select
-    proxies:
-      - 🚀 自动选择
-      - DIRECT
-      - 🇭🇰 香港节点
-      - 🇯🇵 日本节点
-      - 🇸🇬 新加坡节点
-      - 🇺🇸 美国节点
-      - 🇪🇺 其他地区
-
-  - name: 🇭🇰 香港节点
-    type: select
-    proxies:
+      - "🇪🇸ChatGPTL-西班牙马德里2XC § 0"
+      - "🇸🇬CTB-新加坡15MR2 § 1"
+      - "🇸🇬CTB-新加坡51CR2 § 2"
+      - "🇯🇵CTB-日本55MR2 § 3"
+      - "🇯🇵CTB-日本58CR § 4"
+      - "🇸🇬新加坡535770DRLI § 5"
+      - "🇩🇪ChatGPT-MG-德国法兰克福2CR4 § 6"
+      - "🇯🇵CS-日本26CR4 § 7"
+      - "🇸🇬CTB-新加坡8NS1 § 8"
+      - "🇺🇸RN-美国西雅图15XC § 9"
+      - "🇯🇵CS-日本118XC § 10"
+      - "🇯🇵CTB-日本77AZ § 11"
+      - "🇺🇸HN-美国俄勒冈6MR2 § 12"
       - "🇭🇰IPLC深港235X § 13"
       - "🇭🇰IPLC深港QZ1 § 14"
       - "🇭🇰IPLC深港QZ2 § 15"
       - "🇭🇰AC-香港6SCR § 16"
       - "🇭🇰AC-香港5SMR § 17"
       - "🇭🇰AC-香港1CR § 18"
+      - "🇺🇸ChatGPTRN-美国圣何塞31CR § 19"
       - "🇭🇰IPLC深港126X § 20"
+      - "🇺🇸RN-美国西雅图20CR5 § 21"
+      - "🇺🇸IPLC-GoogleScholar专用147QT § 22"
+      - "🇺🇸IPLC-GoogleScholar专用145QT § 23"
       - "🇭🇰IPLC深港QZ3 § 24"
       - "🇭🇰IPLC深港QZ4 § 25"
+      - "🇯🇵XZ-日本-10XB1 § 26"
+      - "🇨🇳CS-台湾28XB2 § 27"
       - "🇭🇰IPLC深港25H电信 § 28"
       - "🇭🇰IPLC深港26H电信 § 29"
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
 
-  - name: 🇯🇵 日本节点
-    type: select
-    proxies:
-      - "🇯🇵CTB-日本55MR2 § 3"
-      - "🇯🇵CTB-日本58CR § 4"
-      - "🇯🇵CS-日本26CR4 § 7"
-      - "🇯🇵CS-日本118XC § 10"
-      - "🇯🇵CTB-日本77AZ § 11"
-      - "🇯🇵XZ-日本-10XB1 § 26"
-
-  - name: 🇸🇬 新加坡节点
-    type: select
-    proxies:
-      - "🇸🇬CTB-新加坡15MR2 § 1"
-      - "🇸🇬CTB-新加坡51CR2 § 2"
-      - "🇸🇬新加坡535770DRLI § 5"
-      - "🇸🇬CTB-新加坡8NS1 § 8"
-
-  - name: 🇺🇸 美国节点
-    type: select
-    proxies:
-      - "🇺🇸RN-美国西雅图15XC § 9"
-      - "🇺🇸HN-美国俄勒冈6MR2 § 12"
-      - "🇺🇸RN-美国西雅图20CR5 § 21"
-      - "🇺🇸ChatGPTRN-美国圣何塞31CR § 19"
-
-  - name: 🇪🇺 其他地区
+  - name: 📺 手动选择
     type: select
     proxies:
       - "🇪🇸ChatGPTL-西班牙马德里2XC § 0"
+      - "🇸🇬CTB-新加坡15MR2 § 1"
+      - "🇸🇬CTB-新加坡51CR2 § 2"
+      - "🇯🇵CTB-日本55MR2 § 3"
+      - "🇯🇵CTB-日本58CR § 4"
+      - "🇸🇬新加坡535770DRLI § 5"
       - "🇩🇪ChatGPT-MG-德国法兰克福2CR4 § 6"
-      - "🇨🇳CS-台湾28XB2 § 27"
+      - "🇯🇵CS-日本26CR4 § 7"
+      - "🇸🇬CTB-新加坡8NS1 § 8"
+      - "🇺🇸RN-美国西雅图15XC § 9"
+      - "🇯🇵CS-日本118XC § 10"
+      - "🇯🇵CTB-日本77AZ § 11"
+      - "🇺🇸HN-美国俄勒冈6MR2 § 12"
+      - "🇭🇰IPLC深港235X § 13"
+      - "🇭🇰IPLC深港QZ1 § 14"
+      - "🇭🇰IPLC深港QZ2 § 15"
+      - "🇭🇰AC-香港6SCR § 16"
+      - "🇭🇰AC-香港5SMR § 17"
+      - "🇭🇰AC-香港1CR § 18"
+      - "🇺🇸ChatGPTRN-美国圣何塞31CR § 19"
+      - "🇭🇰IPLC深港126X § 20"
+      - "🇺🇸RN-美国西雅图20CR5 § 21"
       - "🇺🇸IPLC-GoogleScholar专用147QT § 22"
       - "🇺🇸IPLC-GoogleScholar专用145QT § 23"
+      - "🇭🇰IPLC深港QZ3 § 24"
+      - "🇭🇰IPLC深港QZ4 § 25"
+      - "🇯🇵XZ-日本-10XB1 § 26"
+      - "🇨🇳CS-台湾28XB2 § 27"
+      - "🇭🇰IPLC深港25H电信 § 28"
+      - "🇭🇰IPLC深港26H电信 § 29"
+
+  - name: PROXY
+    type: select
+    proxies:
+      - "🇪🇸ChatGPTL-西班牙马德里2XC § 0"
+      - "🇸🇬CTB-新加坡15MR2 § 1"
+      - "🇸🇬CTB-新加坡51CR2 § 2"
+      - "🇯🇵CTB-日本55MR2 § 3"
+      - "🇯🇵CTB-日本58CR § 4"
+      - "🇸🇬新加坡535770DRLI § 5"
+      - "🇩🇪ChatGPT-MG-德国法兰克福2CR4 § 6"
+      - "🇯🇵CS-日本26CR4 § 7"
+      - "🇸🇬CTB-新加坡8NS1 § 8"
+      - "🇺🇸RN-美国西雅图15XC § 9"
+      - "🇯🇵CS-日本118XC § 10"
+      - "🇯🇵CTB-日本77AZ § 11"
+      - "🇺🇸HN-美国俄勒冈6MR2 § 12"
+      - "🇭🇰IPLC深港235X § 13"
+      - "🇭🇰IPLC深港QZ1 § 14"
+      - "🇭🇰IPLC深港QZ2 § 15"
+      - "🇭🇰AC-香港6SCR § 16"
+      - "🇭🇰AC-香港5SMR § 17"
+      - "🇭🇰AC-香港1CR § 18"
+      - "🇺🇸ChatGPTRN-美国圣何塞31CR § 19"
+      - "🇭🇰IPLC深港126X § 20"
+      - "🇺🇸RN-美国西雅图20CR5 § 21"
+      - "🇺🇸IPLC-GoogleScholar专用147QT § 22"
+      - "🇺🇸IPLC-GoogleScholar专用145QT § 23"
+      - "🇭🇰IPLC深港QZ3 § 24"
+      - "🇭🇰IPLC深港QZ4 § 25"
+      - "🇯🇵XZ-日本-10XB1 § 26"
+      - "🇨🇳CS-台湾28XB2 § 27"
+      - "🇭🇰IPLC深港25H电信 § 28"
+      - "🇭🇰IPLC深港26H电信 § 29"
+
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt
+    path: ./ruleset/reject.yaml
+    interval: 86400
+  icloud:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+  apple:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt
+    path: ./ruleset/apple.yaml
+    interval: 86400
+  google:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt
+    path: ./ruleset/google.yaml
+    interval: 86400
+  proxy:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+  direct:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt
+    path: ./ruleset/direct.yaml
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt
+    path: ./ruleset/private.yaml
+    interval: 86400
+  gfw:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+  applications:
+    type: http
+    behavior: classical
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt
+    path: ./ruleset/applications.yaml
+    interval: 86400
+rules:
+- RULE-SET,applications,DIRECT
+- DOMAIN,clash.razord.top,DIRECT
+- DOMAIN,yacd.haishan.me,DIRECT
+- RULE-SET,private,DIRECT
+- RULE-SET,reject,REJECT
+- RULE-SET,icloud,DIRECT
+- RULE-SET,apple,DIRECT
+- RULE-SET,google,PROXY
+- RULE-SET,proxy,PROXY
+- RULE-SET,direct,DIRECT
+- RULE-SET,lancidr,DIRECT
+- RULE-SET,cncidr,DIRECT
+- RULE-SET,telegramcidr,PROXY
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,PROXY
