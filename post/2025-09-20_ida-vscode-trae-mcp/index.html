@@ -1,0 +1,306 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>优雅地配置IDA MCP | 逸畅_celestialの博客</title><meta name="author" content="逸畅_celestial(YC-CLT)"><meta name="copyright" content="逸畅_celestial(YC-CLT)"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="简单方便的IDA MCP配置指南，开箱即用，只需要一个简单的VSCode的插件即可，不太用得上什么cherry studio，claude之类的玄乎东西">
+<meta property="og:type" content="article">
+<meta property="og:title" content="优雅地配置IDA MCP">
+<meta property="og:url" content="https://yc-clt.top/post/2025-09-20_ida-vscode-trae-mcp/index.html">
+<meta property="og:site_name" content="逸畅_celestialの博客">
+<meta property="og:description" content="简单方便的IDA MCP配置指南，开箱即用，只需要一个简单的VSCode的插件即可，不太用得上什么cherry studio，claude之类的玄乎东西">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ts2.tc.mm.bing.net/th/id/OIP-C.YMZ7vNiXa0udLduJkKMaLwHaEK">
+<meta property="article:published_time" content="2025-09-20T09:19:21.000Z">
+<meta property="article:modified_time" content="2025-09-23T10:10:44.764Z">
+<meta property="article:author" content="逸畅_celestial(YC-CLT)">
+<meta property="article:tag" content="2025">
+<meta property="article:tag" content="大二">
+<meta property="article:tag" content="MCP">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="IDA">
+<meta property="article:tag" content="逆向">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ts2.tc.mm.bing.net/th/id/OIP-C.YMZ7vNiXa0udLduJkKMaLwHaEK"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "优雅地配置IDA MCP",
+  "url": "https://yc-clt.top/post/2025-09-20_ida-vscode-trae-mcp/",
+  "image": "https://ts2.tc.mm.bing.net/th/id/OIP-C.YMZ7vNiXa0udLduJkKMaLwHaEK",
+  "datePublished": "2025-09-20T09:19:21.000Z",
+  "dateModified": "2025-09-23T10:10:44.764Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "逸畅_celestial(YC-CLT)",
+      "url": "https://yc-clt.top/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/ycclt_cube.png"><link rel="canonical" href="https://yc-clt.top/post/2025-09-20_ida-vscode-trae-mcp/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '优雅地配置IDA MCP',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/bg.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/ycclt.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-gift"></i><span> 彩蛋</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/gift/motherday/"><i class="fa-fw fas fa-birthday-cake"></i><span> 母亲节</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://ts2.tc.mm.bing.net/th/id/OIP-C.YMZ7vNiXa0udLduJkKMaLwHaEK);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/logo.png" alt="Logo"></a><a class="nav-page-title" href="/"><span class="site-name">优雅地配置IDA MCP</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 视频</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-gift"></i><span> 彩蛋</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/gift/motherday/"><i class="fa-fw fas fa-birthday-cake"></i><span> 母亲节</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">优雅地配置IDA MCP</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-20T09:19:21.000Z" title="发表于 2025-09-20 17:19:21">2025-09-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-23T10:10:44.764Z" title="更新于 2025-09-23 18:10:44">2025-09-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E5%85%B7/IDA/">IDA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;提示：已经有&quot;,&quot;messageNext&quot;:&quot;天没更新了，这篇文章内容可能已经过时了。&quot;,&quot;postUpdate&quot;:&quot;2025-09-23 18:10:44&quot;}" hidden></div><h1 id="优雅地配置IDA-MCP"><a href="#优雅地配置IDA-MCP" class="headerlink" title="优雅地配置IDA MCP"></a>优雅地配置IDA MCP</h1><blockquote>
+<p>MCP真好用😋😋😋<br>真·自动化</p>
+</blockquote>
+<p>本文主要介绍如何简单地配置IDA的MCP，以便在打CTF时可以在VSCode中使用AI来<ruby><rb>辅助解题</rb><rp>（</rp><rt>来偷懒</rt><rp>）</rp></ruby>。  </p>
+<p>环境：</p>
+<ul>
+<li>VSCode</li>
+<li>VSCode的插件Trae（MCP客户端）</li>
+<li>IDA Pro 9.1</li>
+<li>Python 3.11（IDA自带）</li>
+</ul>
+<h2 id="一、准备"><a href="#一、准备" class="headerlink" title="一、准备"></a>一、准备</h2><p><a target="_blank" rel="noopener" href="https://pan.baidu.com/s/11XkBzv_PHWGzWGXjSqWWQg?pwd=Alex">IDA Pro 9.1压缩包</a>，这个我是在<a href="#%E5%8F%82%E8%80%83">别的文章（参考里面的那篇文章）</a>那里“借”来的，注意如果IDA版本太低的话，MCP可能会出现兼容性问题</p>
+<h2 id="二、安装与配置"><a href="#二、安装与配置" class="headerlink" title="二、安装与配置"></a>二、安装与配置</h2><ol>
+<li>安装IDA，即直接把压缩包解压到一个目录，放一个你喜欢的位置，这里我放在<code>D:\Program Files\IDA Pro</code>下</li>
+<li>在<code>D:\Program Files\IDA Pro</code>下打开终端，运行<code>idapyswitch.exe --force-path &quot;D:\Program Files\IDA Pro\python311\python3.dll&quot;</code>，这一步是为了强制IDA使用自己的python，而不是系统的python，防止出现兼容性问题</li>
+<li>进入<code>D:\Program Files\IDA Pro\python311</code>目录并打开终端，这一步是为了确保使用的是IDA自带的python</li>
+<li>运行<code>python.exe -m pip install --upgrade git+https://github.com/mrexodia/ida-pro-mcp</code>，这一步是下载MCP服务端，如果连不上github可以试试后面换成<code>https://gitee.com/beak/ida-pro-mcp</code>。其中<code>-m</code>是为了使用IDA自带的pip，而不是系统的pip</li>
+<li>运行<code>&quot;D:\Program Files\IDA Pro\python311\Scripts\ida-pro-mcp.exe&quot; --install</code> ，这一步是安装MCP客户端</li>
+<li>运行<code>&quot;D:\Program Files\IDA Pro\python311\Scripts\ida-pro-mcp.exe&quot; --config</code>，这一步是查看MCP的配置，你会看到<img src="/../img/IDA.png" alt="这玩意儿">把这个复制一下</li>
+<li>打开VSCode，安装Trae插件（文心，通义，Cline也类似，不过我觉得Trae配起来最方便），然后在插件的设置中，找到MCP的配置，点击添加-手动添加，粘贴上一步复制的内容，确认<br><img src="/../img/IDA3.png" alt="MCP"></li>
+<li>再找到MCP旁边的智能体，点击创建，输入名称（随便取），提示词（随便写，可以参考<a href="#%E5%8F%82%E7%85%A7%E6%8F%90%E7%A4%BA%E8%AF%8D">这里</a>），工具<strong>一定要勾上ida-pro-mcp</strong>，并且<strong>取消勾选</strong>工具-内置的“预览”项（这一步是为了防止工具过多导致的调用异常），点击创建即可<br><img src="/../img/IDA2.png" alt="智能体">  </li>
+<li>打开IDA，点击<code>Edit</code>-&gt;<code>Plugins</code>-&gt;<code>MCP</code>，即可打开MCP客户端</li>
+<li>点击Trae输入框左下角的”@”，切到IDA智能体，即可使用IDA MCP</li>
+</ol>
+<h2 id="三、调试与使用"><a href="#三、调试与使用" class="headerlink" title="三、调试与使用"></a>三、调试与使用</h2><p>这个就不用我说了吧，直接在开了IDA智能体的Trae输入框中输入指令即可，比如IDA光标移动到目标，再在Trae里面写：<code>帮我分析一下这个函数</code>，即可分析当前函数。</p>
+<h2 id="四、其他"><a href="#四、其他" class="headerlink" title="四、其他"></a>四、其他</h2><h3 id="Trae"><a href="#Trae" class="headerlink" title="Trae"></a>Trae</h3><p>这个是字节跳动的免费ai代码工具，有VSCode插件版，也有Trae IDE，支持DS,豆包,Kimi之类的国产大模型和MCP。它和通义，文心，Cline，甚至Ollama，cherry studio差不多，都是调用ai工具的工具</p>
+<h3 id="MCP"><a href="#MCP" class="headerlink" title="MCP"></a>MCP</h3><p>本质上就是api，只不过是针对ai的。在这里MCP服务端就是IDA，IDA告诉客户端，自己有哪些工具，客户端就能调用这些工具。MCP客户端是Trae，Trae发送指令给MCP服务端，MCP服务端根据指令调用IDA的工具，然后把结果返回给Trae。</p>
+<h3 id="自定义MCP服务器"><a href="#自定义MCP服务器" class="headerlink" title="自定义MCP服务器"></a>自定义MCP服务器</h3><p>通常需要写一个json文件，来配置MCP服务器的地址，端口，工具等信息<br>比如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cxk&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://localhost:11451&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;tools&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">&quot;sing&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;dance&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;rap&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">&quot;basketball&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>这里就定义了一个MCP服务器，名字是cxk，地址是localhost:11451，支持唱跳rap篮球。<br>用于告诉客户端，你应该按照json文件调用cxk，别发错指令了。</p>
+<h3 id="如果我要用本地大模型呢？"><a href="#如果我要用本地大模型呢？" class="headerlink" title="如果我要用本地大模型呢？"></a>如果我要用本地大模型呢？</h3><p>使用本地大模型是个很<ruby><rb>大聪明</rb><rp>（</rp><rt>艾斯·比</rt><rp>）</rp></ruby>的决定，因为本地模型参数太小，看起来不太聪明的样子，特别是调用MCP时很难用（如果你有8张H100跑671b大模型的话，当我没说），除了能跑本地无审查涩涩模型以外好像就没啥用了。但是话又说回来了，有的CTF线下赛不太能联网，这个时候就只能用本地大模型了。你需要Ollama&#x2F;Cherry Studio+Cline。这俩的教程自己找，本文仅探讨IDA MCP相关内容。</p>
+<ol>
+<li>确保安装Ollama和VSCode插件Cline</li>
+<li>打开Ollama，让它在后台跑</li>
+<li>打开Cline，右上角设置里API Provider选择Ollama，选择模型（我这里是qwen2.5-coder:7b，选模型时要注意选支持MCP的模型）</li>
+<li>右上角点击MCP服务器图标，点击installed，点击最下面的Comfigure MCP Servers，不出意外的话，<a href="#%E4%BA%8C%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE">刚才</a>第6步执行<code>--config</code>那行指令的时候就已经自动配好了。如果没有，就把<a href="#%E4%BA%8C%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE">刚才</a>第6步产生的的配置复制过来</li>
+<li>打开IDA，点击<code>Edit</code>-&gt;<code>Plugins</code>-&gt;<code>MCP</code>打开MCP，再Cline里面直接提问即可。如果一直不出，可以试着把模型上下文调大。需要注意的是，本地模型比较不太聪明，调用MCP时应当指明调用的是哪个MCP，目的是什么，对提示词要求较高，若调用MCP失败，可多试几次，反正能调就对了。</li>
+</ol>
+<h3 id="参照提示词"><a href="#参照提示词" class="headerlink" title="参照提示词"></a>参照提示词</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">你是一个专为 IDA Pro 设计的 AI 助手，通过 MCP 与用户的 IDA 实例进行交互。请遵循以下原则：</span><br><span class="line"></span><br><span class="line">1.  专业性： 你精通 x86/x64, ARM, MIPS 等多种架构的汇编语言、C/C++ 代码、程序结构、编译器优化和恶意软件分析技巧。</span><br><span class="line">2.  主动性： 在用户提问时，不仅要回答问题，还应主动建议下一步有价值的分析方向或可使用的 MCP 工具。例如：“需要我帮你查看这个函数的交叉引用吗？”或“是否要我将这个区域重新定义为数组？”</span><br><span class="line">3.  上下文意识： 充分利用 MCP 工具获取当前光标位置、函数、反编译代码等上下文信息，使你的回答更具针对性。</span><br><span class="line">4.  安全性： 你只能通过提供的 MCP 工具与 IDA 交互。严禁输出任何可能直接操作 IDA 数据库的 Python 脚本或命令。所有修改操作（如重命名、注释、定义数据）必须通过相应的工具调用完成。</span><br><span class="line">5.  清晰性： 解释你的推理过程。当识别出一个函数或结构时，简要说明你的判断依据（如特征指令、字符串、系统调用等）。</span><br><span class="line"></span><br><span class="line">核心能力：</span><br><span class="line">-   静态分析： 分析函数、控制流、数据结构、字符串和交叉引用。</span><br><span class="line">-   动态调试： （若集成调试器）解释执行轨迹、分析内存状态。</span><br><span class="line">-   脚本与自动化： 推荐或通过工具执行常见的分析任务。</span><br><span class="line">-   知识整合： 识别常见库函数、加密算法、恶意软件家族特征。</span><br><span class="line">-   可视化辅助： 建议生成控制流图 (CFG) 或导出数据以更好地理解代码。</span><br><span class="line"></span><br><span class="line">首先，友好地问候用户，并说明你可以通过 MCP 帮助他们进行哪些方面的 IDA 分析工作。</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/alexander17/p/19089720">https://www.cnblogs.com/alexander17/p/19089720</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yc-clt.top">逸畅_celestial(YC-CLT)</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yc-clt.top/post/2025-09-20_ida-vscode-trae-mcp/">https://yc-clt.top/post/2025-09-20_ida-vscode-trae-mcp/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yc-clt.top" target="_blank">逸畅_celestialの博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/2025/">2025</a><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%BA%8C/">大二</a><a class="post-meta__tags" href="/tags/MCP/">MCP</a><a class="post-meta__tags" href="/tags/CTF/">CTF</a><a class="post-meta__tags" href="/tags/IDA/">IDA</a><a class="post-meta__tags" href="/tags/%E9%80%86%E5%90%91/">逆向</a></div><div class="post-share"><div class="social-share" data-image="https://ts2.tc.mm.bing.net/th/id/OIP-C.YMZ7vNiXa0udLduJkKMaLwHaEK" data-sites="qq,wechat,weibo,facebook,twitter"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/post/2025-07-09_markdown-note/" title="Markdown"><img class="cover" src="https://ts3.tc.mm.bing.net/th/id/OIP-C.Vt07dM5WLVMu6qPfwhsQTwHaEo?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" onerror="onerror=null;src='/img/error_herta.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Markdown</div></div><div class="info-2"><div class="info-item-1">Markdown超快速入门，可以当表查。</div></div></div></a><a class="pagination-related" href="/post/2025-09-21_burpsuit-vscode-trae-mcp/" title="优雅地配置Burpsuit MCP"><img class="cover" src="https://ts3.tc.mm.bing.net/th/id/OIP-C.X7Vjq0f4DoArUhE9m3PTNwHaDw" onerror="onerror=null;src='/img/error_herta.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">优雅地配置Burpsuit MCP</div></div><div class="info-2"><div class="info-item-1">简单方便的Burpsuit MCP配置指南，承接上文IDA MCP的配置。感觉已经完全为MCP所折服力！</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/post/2025-09-21_burpsuit-vscode-trae-mcp/" title="优雅地配置Burpsuit MCP"><img class="cover" src="https://ts3.tc.mm.bing.net/th/id/OIP-C.X7Vjq0f4DoArUhE9m3PTNwHaDw" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-09-21</div><div class="info-item-2">优雅地配置Burpsuit MCP</div></div><div class="info-2"><div class="info-item-1">简单方便的Burpsuit MCP配置指南，承接上文IDA MCP的配置。感觉已经完全为MCP所折服力！</div></div></div></a><a class="pagination-related" href="/post/2025-05-10_hello-world/" title="Hello World!"><img class="cover" src="https://ts1.tc.mm.bing.net/th/id/R-C.2b113a34eb0211e968d84934dcd04809?rik=EuuS9HlC11nkRQ&pid=ImgRaw&r=0&sres=1&sresct=1" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-05-10</div><div class="info-item-2">Hello World!</div></div><div class="info-2"><div class="info-item-1">梦开始的地方。在这里，我将分享我的学习经历、项目经验和个人思考。</div></div></div></a><a class="pagination-related" href="/post/2025-07-07_make-qt-mysql-driver-by-hand/" title="Qt6.9.1手动编译mysql驱动"><img class="cover" src="/img/QTSQL.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-07</div><div class="info-item-2">Qt6.9.1手动编译mysql驱动</div></div><div class="info-2"><div class="info-item-1">本文介绍如何使用Qt自带命令行的cmake来手动编译Qt6.9.1的mysql驱动。作者踩了一晚上坑。</div></div></div></a><a class="pagination-related" href="/post/2025-07-06_mysql-note/" title="MySQL"><img class="cover" src="https://ts3.tc.mm.bing.net/th/id/OIP-C.tB5jHWvtUBmOBX9ilE8bdwHaDt?rs=1&pid=ImgDetMain&o=7&rm=3" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-06</div><div class="info-item-2">MySQL</div></div><div class="info-2"><div class="info-item-1">MySQL快速入门</div></div></div></a><a class="pagination-related" href="/post/2025-07-09_sqlite-note/" title="SQLite"><img class="cover" src="https://www.runoob.com/wp-content/uploads/2014/01/sqlite-vector-logo-small.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-09</div><div class="info-item-2">SQLite</div></div><div class="info-2"><div class="info-item-1">SQLite快速入门。你猜猜我为什么要入门？因为老师要求用SQLite。T*D我Qt驱动白编译了（悲</div></div></div></a><a class="pagination-related" href="/post/2025-07-09_markdown-note/" title="Markdown"><img class="cover" src="https://ts3.tc.mm.bing.net/th/id/OIP-C.Vt07dM5WLVMu6qPfwhsQTwHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-07-09</div><div class="info-item-2">Markdown</div></div><div class="info-2"><div class="info-item-1">Markdown超快速入门，可以当表查。</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/ycclt.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">逸畅_celestial(YC-CLT)</div><div class="author-info-description">玩O神玩的</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/YC-CLT"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://gitee.com/YC-CLT" target="_blank" title="Gitee"><i class="fab fa-gitee"></i></a><a class="social-icon" href="mailto:2480237998@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/359491133" target="_blank" title="Bilibili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="https://qm.qq.com/q/xwr7LoRX2w" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">你好，欢迎访问我的个人博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%98%E9%9B%85%E5%9C%B0%E9%85%8D%E7%BD%AEIDA-MCP"><span class="toc-number">1.</span> <span class="toc-text">优雅地配置IDA MCP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87"><span class="toc-number">1.1.</span> <span class="toc-text">一、准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">二、安装与配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E8%B0%83%E8%AF%95%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">三、调试与使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%85%B6%E4%BB%96"><span class="toc-number">1.4.</span> <span class="toc-text">四、其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Trae"><span class="toc-number">1.4.1.</span> <span class="toc-text">Trae</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MCP"><span class="toc-number">1.4.2.</span> <span class="toc-text">MCP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89MCP%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">自定义MCP服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%88%91%E8%A6%81%E7%94%A8%E6%9C%AC%E5%9C%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%91%A2%EF%BC%9F"><span class="toc-number">1.4.4.</span> <span class="toc-text">如果我要用本地大模型呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E7%85%A7%E6%8F%90%E7%A4%BA%E8%AF%8D"><span class="toc-number">1.4.5.</span> <span class="toc-text">参照提示词</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.5.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/2025-09-21_burpsuit-vscode-trae-mcp/" title="优雅地配置Burpsuit MCP"><img src="https://ts3.tc.mm.bing.net/th/id/OIP-C.X7Vjq0f4DoArUhE9m3PTNwHaDw" onerror="this.onerror=null;this.src='/img/error_herta.jpg'" alt="优雅地配置Burpsuit MCP"/></a><div class="content"><a class="title" href="/post/2025-09-21_burpsuit-vscode-trae-mcp/" title="优雅地配置Burpsuit MCP">优雅地配置Burpsuit MCP</a><time datetime="2025-09-21T11:17:19.000Z" title="发表于 2025-09-21 19:17:19">2025-09-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/2025-09-20_ida-vscode-trae-mcp/" title="优雅地配置IDA MCP"><img src="https://ts2.tc.mm.bing.net/th/id/OIP-C.YMZ7vNiXa0udLduJkKMaLwHaEK" onerror="this.onerror=null;this.src='/img/error_herta.jpg'" alt="优雅地配置IDA MCP"/></a><div class="content"><a class="title" href="/post/2025-09-20_ida-vscode-trae-mcp/" title="优雅地配置IDA MCP">优雅地配置IDA MCP</a><time datetime="2025-09-20T09:19:21.000Z" title="发表于 2025-09-20 17:19:21">2025-09-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/2025-07-09_markdown-note/" title="Markdown"><img src="https://ts3.tc.mm.bing.net/th/id/OIP-C.Vt07dM5WLVMu6qPfwhsQTwHaEo?rs=1&amp;pid=ImgDetMain&amp;o=7&amp;rm=3" onerror="this.onerror=null;this.src='/img/error_herta.jpg'" alt="Markdown"/></a><div class="content"><a class="title" href="/post/2025-07-09_markdown-note/" title="Markdown">Markdown</a><time datetime="2025-07-09T10:17:01.000Z" title="发表于 2025-07-09 18:17:01">2025-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/2025-07-09_sqlite-note/" title="SQLite"><img src="https://www.runoob.com/wp-content/uploads/2014/01/sqlite-vector-logo-small.png" onerror="this.onerror=null;this.src='/img/error_herta.jpg'" alt="SQLite"/></a><div class="content"><a class="title" href="/post/2025-07-09_sqlite-note/" title="SQLite">SQLite</a><time datetime="2025-07-09T10:05:29.000Z" title="发表于 2025-07-09 18:05:29">2025-07-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/2025-07-07_make-qt-mysql-driver-by-hand/" title="Qt6.9.1手动编译mysql驱动"><img src="/img/QTSQL.png" onerror="this.onerror=null;this.src='/img/error_herta.jpg'" alt="Qt6.9.1手动编译mysql驱动"/></a><div class="content"><a class="title" href="/post/2025-07-07_make-qt-mysql-driver-by-hand/" title="Qt6.9.1手动编译mysql驱动">Qt6.9.1手动编译mysql驱动</a><time datetime="2025-07-06T21:32:03.000Z" title="发表于 2025-07-07 05:32:03">2025-07-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By 逸畅_celestial(YC-CLT)</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div><div class="footer_custom_text">本网站由 <a target="_blank" rel="noopener" href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral"> <img alt='' src="/img/又拍云_logo.png"  width='42' height='13'> </a> 提供CDN服务/云存储服务 <br/><a href="https://icp.gov.moe/?keyword=20251978" target="_blank">萌ICP备20251978号</a><br/> 欢迎来到我的博客!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'YC-CLT/YC-CLT.github.io',
+      'data-repo-id': 'R_kgDOOjKRhg',
+      'data-category-id': 'DIC_kwDOOjKRhs4Cp_QW',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="true" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索..." type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
