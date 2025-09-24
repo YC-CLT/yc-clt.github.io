@@ -2,55 +2,825 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>致行星发动机总工程师</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
-    <link href="./style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>父亲生日快乐——一种基于JS的伪shell生日祝福系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Consolas', monospace;
+            background: #000;
+            color: #0f0;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+        
+#terminal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 900px;
+    height: 60%;
+    max-height: 500px;
+    background: rgba(0, 0, 0, 0.85);
+    border: 2px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 10;
+    overflow-y: auto;
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.2), 
+                0 0 40px rgba(0, 255, 0, 0.1) inset;
+    font-family: 'Consolas', 'Monaco', 'Courier New', 'Lucida Console', monospace;
+}
+
+#terminal-content {
+    line-height: 1.4;
+    font-size: 15px;
+    white-space: pre-wrap;
+    color: #ccc;
+    text-shadow: 0 0 2px #0f0;
+    font-family: inherit;
+}
+
+.prompt {
+    color: #0f0;
+    font-weight: bold;
+    text-shadow: 0 0 5px #0f0;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: #0f0;
+    animation: blink 1s infinite;
+    margin-left: 2px;
+    vertical-align: middle;
+    box-shadow: 0 0 5px #0f0;
+}
+
+/* 终端标题栏样式 */
+#terminal::before {
+    content: '终端 - birthday-system';
+    position: absolute;
+    top: -25px;
+    left: 0;
+    background: #333;
+    color: #0f0;
+    padding: 5px 15px;
+    border-radius: 5px 5px 0 0;
+    font-size: 12px;
+    font-family: inherit;
+    border: 1px solid #0f0;
+    border-bottom: none;
+}
+
+/* 终端滚动条样式 */
+#terminal::-webkit-scrollbar {
+    width: 8px;
+}
+
+#terminal::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.3);
+    border-radius: 4px;
+}
+
+#terminal::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 0, 0.5);
+}
+
+@keyframes terminalBoot {
+    0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+@keyframes systemInit {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 0, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(0, 255, 0, 0.8); }
+}
+
+@keyframes messageSend {
+    0%, 100% { border-color: #333; box-shadow: 0 0 25px rgba(0, 255, 0, 0.2); }
+    50% { border-color: #ff0; box-shadow: 0 0 40px rgba(255, 255, 0, 0.8); }
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px #ff0, 0 0 20px #ff0; }
+    to { text-shadow: 0 0 20px #ff0, 0 0 40px #ff0; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+        
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        #digital-rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+        
+        .rocket {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            font-size: 80px;
+            text-align: center;
+            line-height: 60px;
+            z-index: 3;
+            animation: fly 20s linear infinite;
+            text-shadow: 0 0 10px #ff6b00, 0 0 20px #ff6b00;
+        }
+        
+        @keyframes fly {
+            0% {
+                transform: translateX(-150px) translateY(0) rotate(15deg);
+            }
+            100% {
+                transform: translateX(calc(100vw + 150px)) translateY(calc(-100vh - 200px)) rotate(15deg);
+            }
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #0f0;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        #birthday-message {
+            color: #ff0;
+            font-size: 18px;
+            margin-top: 20px;
+            text-shadow: 0 0 10px #ff0;
+        }
+        /* 增强点击启动界面特效 */
+@keyframes particleExplosion {
+    from { transform: scale(0); opacity: 1; }
+    to { transform: scale(3); opacity: 0; }
+}
+
+.hologram-text {
+    background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ff00);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hologramShift 3s ease-in-out infinite alternate;
+}
+
+@keyframes hologramShift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+    </style>
 </head>
 <body>
-    <!-- 星空背景 -->
-    <div class="stars" id="stars"></div>
+    <div id="canvas-container"></div>
+    <canvas id="digital-rain"></canvas>
     
-    <!-- 科幻数据流 -->
-    <div class="data-stream"></div>
-    
-    <!-- 战机动画 -->
-    <div class="fighter">🛸</div>
-    
-    <div class="container">
-        <header class="header">
-            <h1 class="title">行星发动机总工程师节日快乐</h1>
-            <p class="subtitle">地球流浪计划 · 南天门特别致敬</p>
-        </header>
-        
-        <div class="content-box">
-            <p class="message">
-                尊敬的领航员空间站首席工程师：<br><br>
-                在您指挥的这艘名为"家庭"的星际飞船上，<br>
-                您用智慧和坚韧建造了最强大的引力护盾，<br>
-                用耐心和爱心组装了最精密的生命维持系统。<br><br>
-                今天是属于您的节日，<br>
-                愿这份全息讯息穿越2500年的航程，<br>
-                将我们的敬意送达您的手中。
-            </p>
-            <p class="signature">—— 来自地球文明延续委员会</p>
-        </div>
-        
-        <button class="btn" id="activateBtn">激 活 全 息 记 录</button>
-        
-        <div class="footer">
-            <p>识别码：DAD-2077 · 权限等级：最高机密</p>
-            <p>ps: 此讯息已通过量子加密，可在领航员空间站安全展示</p>
-        </div>
+    <div id="terminal">
+        <div id="terminal-content"></div>
     </div>
-
-    <script src="./stars.js"></script>
-    <script src="./jets.js"></script>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            createStars();
-        });
+        // 文本内容
+        const birthdayMessage = `亲爱的爸爸\n\n生日快乐！🎉📚🏫\n\n您不仅是小镇的筑梦师——\n在三尺讲台播种知识的星光\n用粉笔书写人生的诗行\n更是我永远的启明星\n为迷途的我指引方向\n\n"教育是点亮心灯的事业"\n您用卅载春秋\n在青石板上刻下师道传承\n用白发换得桃李满园香\n\n父爱如山 巍峨绵长\n您用坚实的臂膀\n托起我探索世界的渴望\n谆谆教诲如春风化雨\n润泽我生命的原野\n\n愿岁月温柔以待\n祝您康健常乐 桃李芬芳\n\n永远以您为荣的儿子敬上 ❤️🎓`;
+        // 音频播放函数
+    function playSound(filename, loop = false) {
+        try {
+            const audio = new Audio(filename);
+            audio.loop = loop;
+            audio.play().catch(e => console.log('音频播放失败:', e));
+            
+            // 添加stop方法
+            audio.stop = function() {
+                this.pause();
+                this.currentTime = 0;
+            };
+            
+            return audio;
+        } catch (error) {
+            console.log('音频加载失败:', error);
+        }
+    }
+
+        // 终端元素
+        const terminalContent = document.getElementById('terminal-content');
+        const canvasContainer = document.getElementById('canvas-container');
+        
+    // 创建火箭（改为随机生日元素）
+    function createRockets() {
+        // 生日相关emoji数组
+        const birthdayEmojis = ['🎂', '🎁', '🎉', '🎊', '🎈', '🥳', '✨', '🌟', '❤️', '💝'];
+    
+        for (let i = 0; i < 8; i++) {
+            const rocket = document.createElement('div');
+            rocket.className = 'rocket';
+            // 随机选择生日emoji
+            const randomEmoji = birthdayEmojis[Math.floor(Math.random() * birthdayEmojis.length)];
+            rocket.textContent = randomEmoji;
+        
+            // 设置随机初始位置（分散在屏幕底部）
+            const randomStartX = Math.random() * window.innerWidth;
+            const randomStartY = window.innerHeight + Math.random() * 100;
+        
+            // 使用自定义属性设置初始位置
+            rocket.style.setProperty('--start-x', `${randomStartX}px`);
+            rocket.style.setProperty('--start-y', `${randomStartY}px`);
+            rocket.style.left = `${randomStartX}px`;
+            rocket.style.top = `${randomStartY}px`;
+        
+            rocket.style.animationDelay = `${Math.random() * 20}s`;
+            rocket.style.animationDuration = `${15 + Math.random() * 10}s`;
+        
+            // 根据不同的emoji设置不同的颜色效果
+            if (randomEmoji === '🎂' || randomEmoji === '🎁') {
+                rocket.style.textShadow = '0 0 10px #ff6b00, 0 0 20px #ff6b00';
+            } else if (randomEmoji === '🎉' || randomEmoji === '🎊') {
+                rocket.style.textShadow = '0 0 10px #ff0000, 0 0 20px #ff0000';
+            } else if (randomEmoji === '✨' || randomEmoji === '🌟') {
+                rocket.style.textShadow = '0 0 10px #ffff00, 0 0 20px #ffff00';
+            } else if (randomEmoji === '❤️' || randomEmoji === '💝') {
+                rocket.style.textShadow = '0 0 10px #ff1493, 0 0 20px #ff1493';
+            } else {
+                rocket.style.textShadow = '0 0 10px #00ff00, 0 0 20px #00ff00';
+            }
+        document.body.appendChild(rocket);
+    }
+}
+        
+        // 数字雨效果
+        function initDigitalRain() {
+            const canvas = document.getElementById('digital-rain');
+            const ctx = canvas.getContext('2d');
+            
+            // 设置canvas尺寸
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+            
+            const chars = "01";
+            const fontSize = 14;
+            const columns = Math.floor(canvas.width / fontSize);
+            const drops = [];
+            
+            // 初始化雨滴位置
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+            }
+            
+            function draw() {
+                // 半透明背景创建拖尾效果
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#0f0';
+                ctx.font = `${fontSize}px Consolas`;
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    
+                    // 重置雨滴位置
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 33);
+        }
+        
+        // 粒子特效
+        function initParticles() {
+            document.addEventListener('click', function(e) {
+                playSound('click.wav');
+                createParticles(e.clientX, e.clientY);
+            });
+        }
+        
+        function createParticles(x, y) {
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+                
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 2 + Math.random() * 3;
+                const vx = Math.cos(angle) * speed;
+                const vy = Math.sin(angle) * speed;
+                
+                document.body.appendChild(particle);
+                
+                let opacity = 1;
+                const fadeInterval = setInterval(() => {
+                    opacity -= 0.02;
+                    particle.style.opacity = opacity;
+                    
+                    if (opacity <= 0) {
+                        clearInterval(fadeInterval);
+                        document.body.removeChild(particle);
+                    }
+                }, 30);
+                
+                let posX = x;
+                let posY = y;
+                const moveInterval = setInterval(() => {
+                    posX += vx;
+                    posY += vy;
+                    particle.style.left = `${posX}px`;
+                    particle.style.top = `${posY}px`;
+                    
+                    if (opacity <= 0) {
+                        clearInterval(moveInterval);
+                    }
+                }, 30);
+            }
+        }
+        
+        // 流式打印函数
+        async function typeWriter(text, element, speed = 50) {
+            return new Promise(resolve => {
+                let i = 0;
+                const timer = setInterval(() => {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        // 滚动到底部
+                        terminal.scrollTop = terminal.scrollHeight;
+                    } else {
+                        clearInterval(timer);
+                        resolve();
+                    }
+                }, speed);
+            });
+        }
+
+// 初始化终端 - 父亲节特别版
+async function initTerminal() {
+    const initSound = playSound('initTerminal.wav', true);
+
+    // 添加终端启动动画
+    terminal.style.animation = 'terminalBoot 0.5s ease-out';
+    terminal.style.transform = 'translate(-50%, -50%) scale(1.05)';
+    terminal.style.boxShadow = '0 0 50px rgba(0, 255, 0, 0.8)';
+    setTimeout(() => {
+        terminal.style.transform = 'translate(-50%, -50%) scale(1)';
+        terminal.style.boxShadow = '0 0 25px rgba(0, 255, 0, 0.2)';
+    }, 500);
+    
+    terminalContent.innerHTML = '';
+    
+    // 获取当前时间用于显示
+    const now = new Date();
+    const loginTime = now.toLocaleTimeString('zh-CN', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        second: '2-digit'
+    });
+    
+    // UEFI/BIOS启动界面
+    await typeWriter("\n\n BIOS v19- Father's Legacy Edition\n", terminalContent, 3);
+    await typeWriter("  ========================================================\n\n", terminalContent, 3);
+    await new Promise(resolve => setTimeout(resolve, 600));
+    
+    // 硬件检测 - 体现父亲的品质
+    await typeWriter("  Testing Wisdom RAM: 32768MB @ 6400MHz OK\n", terminalContent, 2);
+    await typeWriter("  Memory Type: Patience & Understanding DDR5\n", terminalContent, 2);
+    await new Promise(resolve => setTimeout(resolve, 300));
+    
+    await typeWriter("  CPU: Legacy Processor 16-Core @ 5.0GHz (Support VT-x/AMD-V)\n", terminalContent, 2);
+    await typeWriter("  Features: Sacrifice Technology, Protection Mode, Guidance Engine\n", terminalContent, 2);
+    await new Promise(resolve => setTimeout(resolve, 400));
+    
+    // 启动设备检测
+    await typeWriter("  Booting from: Heart NVMe SSD 4TB \n", terminalContent, 2);
+    await typeWriter("  Secure Boot: Enabled (Trusted Platform Module 2.0)\n\n", terminalContent, 2);
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // GRUB2引导界面
+    await typeWriter("  GNU GRUB version 2.12\n", terminalContent, 3);
+    await typeWriter("  ─────────────────────\n", terminalContent, 3);
+    await typeWriter("  > Father's Legacy OS 3.0 (default)\n", terminalContent, 3);
+    await typeWriter("    Father's Legacy OS 3.0 (recovery mode)\n", terminalContent, 3);
+    await typeWriter("    Memory Diagnostics\n\n", terminalContent, 3);
+    await new Promise(resolve => setTimeout(resolve, 1200));
+    
+    // 内核启动过程
+    await typeWriter("  Loading Linux 6.6.0-father-generic...\n", terminalContent, 2);
+    await typeWriter("  Initializing cgroup subsys cpu\n", terminalContent, 1);
+    await typeWriter("  Initializing cgroup subsys memory\n", terminalContent, 1);
+    await typeWriter("  CPU: Intel(R) Core(TM) i9-14900K (32) 64-bit mode\n", terminalContent, 1);
+    await typeWriter("  SMP: Total of 32 processors activated (921600.00 BogoMIPS)\n", terminalContent, 1);
+    await typeWriter("  Mounting root filesystem: ext4 [OK]\n", terminalContent, 1);
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    // 在系统服务启动部分添加进度条效果
+await typeWriter("  Starting essential system services:\n\n", terminalContent, 3);
+
+// 使用带随机速度的进度条效果
+await typeWriterWithRandomProgress("  Starting Wisdom Distribution Service", "[  OK  ]", terminalContent);
+await typeWriterWithRandomProgress("  Starting Protection Daemon", "[  OK  ]", terminalContent);
+await typeWriterWithRandomProgress("  Starting Sacrifice Engine", "[  OK  ]", terminalContent);
+await typeWriterWithRandomProgress("  Starting Guidance System", "[  OK  ]", terminalContent);
+await typeWriterWithRandomProgress("  Starting Love Compiler", "[  OK  ]", terminalContent);
+await typeWriterWithRandomProgress("  Starting Memory Archive Service", "[  OK  ]", terminalContent);
+await typeWriterWithRandomProgress("  Starting Future Planning Module", "[  OK  ]", terminalContent);
+await typeWriterWithRandomProgress("  Starting Support Framework", "[  OK  ]", terminalContent);
+
+await typeWriter("\n", terminalContent, 1);
+await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // 登录界面
+    await typeWriter("  Father's Legacy OS 3.0 (tty1)\n", terminalContent, 3);
+    await typeWriter("\n", terminalContent, 1);
+    await typeWriter("  father-legacy login: son\n", terminalContent, 3);
+    await typeWriter("  Password: ********\n\n", terminalContent, 3);
+    await new Promise(resolve => setTimeout(resolve, 800));
+
+    // 登录成功信息
+    await typeWriter("  Last login: " + loginTime + " from 192.168.1.2\n", terminalContent, 3);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+      // 添加闪烁光标
+    terminalContent.innerHTML += '<span class="cursor"></span>';
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    initSound.stop();
+
+    // 修复：使用正确的removeChild方法
+    const cursorElement = terminalContent.querySelector('.cursor');
+    if (cursorElement) {
+        terminalContent.removeChild(cursorElement);
+    }
+    terminalContent.innerHTML += '\n';
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    await typeWriter("  按任意键继续...\n", terminalContent, 3);
+    
+    // 使用一次性事件监听器，确保只触发一次
+    const clickHandler = () => {
+        terminalContent.removeEventListener('click', clickHandler);
+        initSystem();
+    };
+    terminalContent.addEventListener('click', clickHandler);
+}
+
+async function initSystem() {
+    const initSound = playSound('initSys.wav', true);
+
+    // 添加系统初始化光效
+    terminal.style.animation = 'systemInit 1s ease-in-out';
+    terminal.style.background = 'linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(0, 30, 0, 0.9))';
+
+    await typeWriter("  系统初始化中...\n",terminalContent,50);
+    await typeWriterWithRandomProgress("  正在连接情感分析模块", "[  OK  ]", terminalContent);
+    await typeWriterWithRandomProgress("  加载父子关系数据库", "[  OK  ]", terminalContent);
+    await typeWriterWithRandomProgress("  正在加载记忆模块", "[  OK  ]", terminalContent);
+    await typeWriterWithRandomProgress("  开始分析父子情感数据", "[  OK  ]", terminalContent);
+    await typeWriter("  检测到深厚情感连接\n", terminalContent, 50);
+    await typeWriter("  情感分析结果：父爱指数 99.9%\n", terminalContent, 50);
+    await typeWriterWithRandomProgress("  生成生日祝福协议\n", terminalContent, 50);
+    await typeWriter("  协议生成完成\n", terminalContent, 50);
+    initSound.stop();
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    setTimeout(() => {
+        terminal.style.background = 'rgba(0, 0, 0, 0.85)';
+    }, 1000);
+
+    // 创建交互式命令行
+    await createInteractiveTerminal();
+}
+
+async function createInteractiveTerminal() {
+    let shouldContinue = true;
+    
+    // 只显示一次提示信息
+    await typeWriter("  输入 start 发送生日祝福\n", terminalContent, 50);
+    
+    // 创建固定的输入容器
+    const inputContainer = document.createElement('div');
+    inputContainer.style.position = 'relative';
+    inputContainer.innerHTML = '<span class="prompt">son@father-legacy:~$ </span>';
+    
+    // 创建普通文本输入框
+    const commandInput = document.createElement('input');
+    commandInput.type = 'text';
+    commandInput.id = 'command-input';
+    commandInput.style.cssText = 'background: transparent; border: none; color: #00ff00; font-family: monospace; font-size: 16px; outline: none; width: 300px;';
+    
+    inputContainer.appendChild(commandInput);
+    terminalContent.appendChild(inputContainer);
+    
+    // 单一事件监听器
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const cmd = commandInput.value.trim();
+            
+            // 显示用户输入的命令
+            const commandDisplay = document.createElement('div');
+            commandDisplay.innerHTML = '<span class="prompt">son@father-legacy:~$ </span>' + cmd;
+            terminalContent.insertBefore(commandDisplay, inputContainer);
+            
+            // 处理命令
+            if (cmd === 'start') {
+                // 移除事件监听器和输入容器
+                commandInput.removeEventListener('keydown', handleKeyDown);
+                terminalContent.removeChild(inputContainer);
+                
+                // 启动生日祝福发送
+                birthdayMessageSender().then(() => {
+                    shouldContinue = false;
+                });
+            } else {
+                // 不是start命令，刷新页面
+                location.reload();
+            }
+            
+            // 确保滚动到底部
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+    };
+    
+    // 绑定事件监听器
+    commandInput.addEventListener('keydown', handleKeyDown);
+    commandInput.focus();
+    
+    // 等待循环结束
+    while (shouldContinue) {
+        await new Promise(resolve => setTimeout(resolve, 100));
+    }
+}
+
+
+async function birthdayMessageSender() {
+    playSound('sendBirthdayMassage.wav');
+
+    // 添加传输特效
+    terminal.style.animation = 'messageSend 2s ease-in-out';
+    terminal.style.border = '2px solid #ff0';
+    terminal.style.boxShadow = '0 0 30px rgba(255, 255, 0, 0.6)';
+
+    await typeWriter("  正在启动祝福传输程序...\n", terminalContent, 50);
+    await typeWriter("  传输目标：父亲生日频道\n", terminalContent, 50);
+    await typeWriterWithRandomProgress("  传输开始", "[  OK  ]", terminalContent);
+    terminalContent.innerHTML += '<span class="prompt">son@father-legacy:~$ </span><br/>';
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // 恢复终端样式
+    setTimeout(() => {
+        terminal.style.border = '2px solid #333';
+        terminal.style.boxShadow = '0 0 25px rgba(0, 255, 0, 0.2)';
+    }, 2000);
+    const bgm = playSound('bgm.mp3', true); // 开始播放背景音乐并循环
+    // 显示生日祝福
+    terminalContent.innerHTML += '<div id="birthday-message"></div>';
+    const messageDiv = document.getElementById('birthday-message');
+    messageDiv.style.animation = 'textGlow 3s ease-in-out infinite alternate';
+    await typeWriter(birthdayMessage, messageDiv, 500);
+}
+
+
+// 带随机速度的进度条打印函数
+async function typeWriterWithRandomProgress(text, result, element) {
+    return new Promise(resolve => {
+        let i = 0;
+        const baseText = element.innerHTML;
+        const minSpeed = 20; // 最小速度
+        const maxSpeed = 100; // 最大速度
+        
+        // 先显示文本
+        const textTimer = setInterval(() => {
+            if (i < text.length) {
+                // 随机速度
+                const randomSpeed = Math.floor(Math.random() * (maxSpeed - minSpeed + 1)) + minSpeed;
+                
+                element.innerHTML = baseText + text.substring(0, i + 1);
+                i++;
+                terminal.scrollTop = terminal.scrollHeight;
+                
+                // 随机暂停，模拟真实系统加载
+                if (Math.random() < 0.1) {
+                    clearInterval(textTimer);
+                    setTimeout(() => {
+                        const newTimer = setInterval(() => {
+                            if (i < text.length) {
+                                element.innerHTML = baseText + text.substring(0, i + 1);
+                                i++;
+                                terminal.scrollTop = terminal.scrollHeight;
+                            } else {
+                                clearInterval(newTimer);
+                                showProgressDots();
+                            }
+                        }, Math.floor(Math.random() * 50) + 30);
+                    }, Math.floor(Math.random() * 800) + 200);
+                }
+            } else {
+                clearInterval(textTimer);
+                showProgressDots();
+            }
+        }, Math.floor(Math.random() * 50) + 30);
+        
+        function showProgressDots() {
+            // 显示动态进度条
+            let progress = 0;
+            const maxProgress = 100;
+            const progressTimer = setInterval(() => {
+                progress += Math.floor(Math.random() * 15) + 5;
+                if (progress > maxProgress) progress = maxProgress;
+                
+                const barLength = 20;
+                const filled = Math.floor((progress / maxProgress) * barLength);
+                const empty = barLength - filled;
+                const progressBar = '[' + '='.repeat(filled) + ' '.repeat(empty) + ']';
+                
+                element.innerHTML = baseText + text + ' ' + progressBar + ' ' + progress + '%';
+                terminal.scrollTop = terminal.scrollHeight;
+                
+                if (progress >= maxProgress) {
+                    clearInterval(progressTimer);
+                    // 显示最终结果
+                    setTimeout(() => {
+                        element.innerHTML = baseText + text + ' ' + result + '\n';
+                        resolve();
+                    }, 300);
+                }
+            }, Math.floor(Math.random() * 150) + 50);
+        }
+    });
+}
+        // 页面加载完成后初始化视觉效果，但不立即启动终端
+        window.onload = function() {
+            initDigitalRain();
+            createRockets();
+            initParticles();
+            
+            // 创建科幻风格点击启动界面
+            const startScreen = document.createElement('div');
+            startScreen.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at center, rgba(0, 20, 40, 0.95) 0%, rgba(0, 0, 0, 0.98) 70%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                cursor: pointer;
+                overflow: hidden;
+            `;
+            
+            // 添加科技感背景网格
+            const gridOverlay = document.createElement('div');
+            gridOverlay.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: 
+                    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+                background-size: 50px 50px;
+                animation: gridMove 20s linear infinite;
+                pointer-events: none;
+            `;
+            
+            const startButton = document.createElement('div');
+            startButton.style.cssText = `
+                position: relative;
+                padding: 30px 60px;
+                background: linear-gradient(135deg, 
+                    rgba(0, 200, 255, 0.1) 0%, 
+                    rgba(0, 100, 200, 0.2) 50%, 
+                    rgba(0, 200, 255, 0.1) 100%);
+                color: #00ffff;
+                font-family: 'Orbitron', 'Consolas', monospace;
+                font-size: 28px;
+                font-weight: bold;
+                border-radius: 15px;
+                text-align: center;
+                border: 2px solid #00ffff;
+                box-shadow: 
+                    0 0 25px rgba(0, 255, 255, 0.6),
+                    0 0 50px rgba(0, 255, 255, 0.3) inset;
+                text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+                animation: 
+                    neonPulse 2s ease-in-out infinite alternate,
+                    hologramFloat 3s ease-in-out infinite alternate;
+                backdrop-filter: blur(10px);
+                transform-style: preserve-3d;
+                transition: all 0.3s ease;
+            `;
+            startButton.textContent = '🚀 启动父亲生日祝福系统 🎯';
+            
+            // 添加光晕效果
+            const glowEffect = document.createElement('div');
+            glowEffect.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(0, 255, 255, 0.3) 0%, transparent 70%);
+                animation: glowPulse 3s ease-in-out infinite alternate;
+                pointer-events: none;
+                z-index: -1;
+            `;
+            
+            // 添加CSS动画样式
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes neonPulse {
+                    from { box-shadow: 0 0 25px rgba(0, 255, 255, 0.6), 0 0 50px rgba(0, 255, 255, 0.3) inset; }
+                    to { box-shadow: 0 0 40px rgba(0, 255, 255, 0.8), 0 0 80px rgba(0, 255, 255, 0.5) inset; }
+                }
+                @keyframes hologramFloat {
+                    from { transform: translateY(0px) rotateX(5deg); }
+                    to { transform: translateY(-10px) rotateX(-5deg); }
+                }
+                @keyframes glowPulse {
+                    from { opacity: 0.3; transform: translate(-50%, -50%) scale(0.8); }
+                    to { opacity: 0.6; transform: translate(-50%, -50%) scale(1.2); }
+                }
+                @keyframes gridMove {
+                    from { background-position: 0 0; }
+                    to { background-position: 50px 50px; }
+                }
+            `;
+            
+            startButton.appendChild(glowEffect);
+            startScreen.appendChild(gridOverlay);
+            startScreen.appendChild(startButton);
+            document.head.appendChild(style);
+            document.body.appendChild(startScreen);
+            
+            // 悬停效果
+            startButton.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) translateY(-5px)';
+                this.style.boxShadow = '0 0 50px rgba(0, 255, 255, 0.8), 0 0 100px rgba(0, 255, 255, 0.5) inset';
+            });
+            
+            startButton.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+            
+            // 点击启动事件
+            startScreen.addEventListener('click', function() {
+                playSound('click.wav');
+                this.style.opacity = '0';
+                this.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    document.body.removeChild(this);
+                    initTerminal(); // 点击后才开始初始化终端
+                }, 500);
+            });
+        };
     </script>
 </body>
 </html>
